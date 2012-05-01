@@ -23,7 +23,6 @@
   <body>
     <a id="forkme_banner" href="https://github.com/overshard/pinry">Fork Me on GitHub</a>
     <div class="shell">
-
       <header>
         <span class="ribbon-outer">
           <span class="ribbon-inner">
@@ -46,43 +45,45 @@
       <section id="main_content">
         <p><img src="https://github.com/overshard/pinry/raw/master/screenshot.png" alt="Pinry Screenshot"></p>
 
-<h2>Why?</h2>
-
-<p>Because I don't like sharing. I would use these services to store a lot of
-images and data that isn't necessarily personal but that I don't actually want
-to share or deal with the possibility of having it taken down by a DMCA notice.
-My use of Pinterest/Wookmark boils down to having personal board for things I
-want to remember or keep for inspiration.</p>
-
-<h2>Plans</h2>
-
-<p>Some features that I want to implement, if you know how to implement them then
-please do them for me! I'm very pull-request friendly and will not yell at you
-for bad code, I'll simply work with you to improve it.</p>
-
-<ul>
-<li>Add non-image URL support, take "screenshot" of page as a thumbnail.</li>
-<li>Create a bookmarklet for quick saving.</li>
-<li>Manual and automatic tagging via description, image alt tags and whatever else I can scrape.</li>
-<li>Statistics page with graphs for image views, what times of day have the most posts, etc.</li>
-</ul><h2>Getting Started</h2>
-
-<p>Have virtualenv and pip installed. You may also need to have the build
-dependencies for PIL installed. (If you are on Ubuntu you can do this by typing
-"sudo apt-get build-dep python-imaging".)</p>
-
-<pre><code>$ git clone git://github.com/overshard/pinry.git
+        <h2>Why?</h2>
+        
+        <p>Because I don't like sharing. I would use these services to store a lot of
+        images and data that isn't necessarily personal but that I don't actually want
+        to share or deal with the possibility of having it taken down by a DMCA notice.
+        My use of Pinterest/Wookmark boils down to having personal board for things I
+        want to remember or keep for inspiration.</p>
+        
+        <h2>Plans</h2>
+        
+        <p>Some features that I want to implement, if you know how to implement them then
+        please do them for me! I'm very pull-request friendly and will not yell at you
+        for bad code, I'll simply work with you to improve it.</p>
+        
+        <ul>
+          <li>Add non-image URL support, take "screenshot" of page as a thumbnail.</li>
+          <li>Create a bookmarklet for quick saving.</li>
+          <li>Manual and automatic tagging via description, image alt tags and whatever else I can scrape.</li>
+          <li>Statistics page with graphs for image views, what times of day have the most posts, etc.</li>
+        </ul>
+        
+        <h2>Getting Started</h2>
+        
+        <p>Have virtualenv and pip installed. You may also need to have the build
+        dependencies for PIL installed. (If you are on Ubuntu you can do this by typing
+        "sudo apt-get build-dep python-imaging".)</p>
+        
+<pre>$ git clone git://github.com/overshard/pinry.git
 $ cd pinry
 $ virtualenv .
 $ bin/pip install -r requirements.txt
 $ bin/python manage.py syncdb
 $ bin/python manage.py migrate
 $ bin/python manage.py runserver
-</code></pre>
-
-<p>Following this will get you a development server up and running. If you want a
-production server <a href="https://www.google.com/search?q=deploy+django+production">Google around</a> for more information on running Django in a
-production environment and create a "pinry/settings/production.py" file.</p>
+</pre>
+        
+        <p>Following this will get you a development server up and running. If you want a
+        production server <a href="https://www.google.com/search?q=deploy+django+production">Google around</a> for more information on running Django in a
+        production environment and create a "pinry/settings/production.py" file.</p>
       </section>
 
       <footer>
@@ -96,9 +97,6 @@ production environment and create a "pinry/settings/production.py" file.</p>
         <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
         <span class="octocat"></span>
       </footer>
-
     </div>
-
-    
   </body>
 </html>

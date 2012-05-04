@@ -21,15 +21,20 @@ def pins_recent(request, page=1):
 
     return HttpResponse(simplejson.dumps(recent_pins), mimetype="application/json")
 
+def pins_add_form(request):
+    mediaBM=str(request.GET.get('media'))
+    return HttpResponse("<html><p><img src=\""+mediaBM+"\"/><br/><form action=\"/api/pins/add\"><input type=\"hidden\" name=\"media\" value=\""+mediaBM+"\" /><input type=\"text\" value=\"Like\" name=\"description\"/><br/><input type=\"submit\"/></form></p></html>")
+
+
 #FIXME: i am full of dirty hacks :(
 def pins_add(request):
     mediaBM=str(request.GET.get('media'))
-    urlBM=str(request.GET.get('url'))
+    #urlBM=str(request.GET.get('url'))
     descriptionBM=str(request.GET.get('description'))
-    titleBM=str(request.GET.get('title'))
-    is_videoBM=request.GET.get('is_video')
+    #titleBM=str(request.GET.get('title'))
+    #is_videoBM=request.GET.get('is_video')
     nameOfMedia = "pins/pin/" + mediaBM.split('/')[-1]
-    pinNew = Pin(url=mediaBM,description=titleBM,image=nameOfMedia)
+    pinNew = Pin(url=mediaBM,description=descriptionBM,image=nameOfMedia)
     f_orig=open("/opt/sources/code/pinry/media/"+nameOfMedia,'w')
     f_thumbnail=open("/opt/sources/code/pinry/media/"+nameOfMedia.rstrip('.jpg')+".200x1000.jpg",'w')
     img_temp = ImageFile(f_orig)

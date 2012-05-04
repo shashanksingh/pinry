@@ -61,4 +61,5 @@ INSTALLED_APPS = (
     'pinry.core',
     'pinry.pins',
     'pinry.api',
+    'django.contrib.admin',
 )

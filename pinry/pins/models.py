@@ -12,6 +12,11 @@ class Pin(models.Model):
     url = models.TextField()
     description = models.TextField(blank=True, null=True)
     image = ImageWithThumbsField(upload_to='pins/pin', sizes=((200,1000),))
+    is_video = models.BooleanField()
+    blog_url = models.URLField()
+    buy_url = models.URLField()
+
+    
 
     def __unicode__(self):
         return self.url

@@ -3,7 +3,7 @@ from django.template.defaultfilters import slugify
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
 
-from thumbs import ImageWithThumbsField
+#from thumbs import ImageWithThumbsField
 
 import urllib2
 
@@ -11,7 +11,8 @@ import urllib2
 class Pin(models.Model):
     url = models.TextField()
     description = models.TextField(blank=True, null=True)
-    image = ImageWithThumbsField(upload_to='pins/pin', sizes=((200,1000),))
+#    image = ImageWithThumbsField(upload_to='pins/pin', sizes=((200,1000),))
+    image = models.ImageField(upload_to='pins/pin')
     is_video = models.BooleanField()
     blog_url = models.URLField()
     buy_url = models.URLField()

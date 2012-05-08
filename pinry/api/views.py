@@ -14,9 +14,11 @@ def pins_recent(request, page=1):
     for pin in pins:
         recent_pins.append({
             'id': pin.id,
-            'thumbnail': pin.image.url_200x1000,
+            'thumbnail': pin.image.url.rstrip('.jpg')+".200x1000.jpg",
             'original': pin.image.url,
             'description': pin.description,
+            'blog_url': pin.blog_url,
+            'buy_url' : pin.buy_url,
         })
 
     return HttpResponse(simplejson.dumps(recent_pins), mimetype="application/json")

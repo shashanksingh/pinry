@@ -63,7 +63,7 @@ $(window).ready(function () {
                   html += '<img src="'+image.thumbnail+'" width="200" height="'+Math.round(image.height/image.width*200)+'">';
               html += '</a>';
               html += '<p>'+image.description+'</p>';
-              if (image.blog_url != "" ) html += '<p> <a class="btn" href="'+image.blog_url+'">Blog</a> &nbsp;'
+              if (image.blog_url != "" ) html += '<p> <a class="btn" href="'+image.blog_url+'">Read On Blog</a> &nbsp;'
               if (image.buy_url != "" ) html += '<a class="btn" href="'+image.buy_url+'">Buy This</a> &nbsp;'
           html += '</div>';
         }

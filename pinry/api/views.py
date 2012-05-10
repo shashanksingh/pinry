@@ -25,7 +25,7 @@ def pins_recent(request, page=1):
 
 def pins_add_form(request):
     mediaBM=str(request.GET.get('media'))
-    return HttpResponse("<html><p><img src=\""+mediaBM+"\"/><br/><form action=\"/api/pins/add\"><input type=\"hidden\" name=\"media\" value=\""+mediaBM+"\" /><input type=\"text\" value=\"Like\" name=\"description\"/><br/><input type=\"submit\"/></form></p></html>")
+    return HttpResponse("<html><body onload=\"window.resizeTo(600,600)\"><p><img src=\""+mediaBM+"\"/><br/><form action=\"/api/pins/add\"><input type=\"hidden\" name=\"media\" value=\""+mediaBM+"\" /><h2 style=\"font: normal 26px 'Lobster', cursive , bold; \">Describe What you Like</h2><br/><input type=\"text\" value=\"Like\" name=\"description\"style=\"width:200px; height: 30px;\"/><br/><input type=\"submit\" style=\"background-color:#DFDFDF; \"/></form></p></body></html>")
 
 
 #FIXME: i am full of dirty hacks :(
@@ -49,4 +49,4 @@ def pins_add(request):
     img_thumb_temp.close()
     #img_temp.save(nameOfMedia)
     pinNew.save()
-    return HttpResponse("<html><p>Image Succesfully Loaded<br/><img src=\""+mediaBM+"\"/><br/>"+nameOfMedia+"</p></html>")
+    return HttpResponse("<html><body onload=\"window.resizeTo(600,600)\"><p> <h2 style=\"font: normal 26px 'Lobster', cursive , bold;\" >Image Succesfully Loaded</h2><br/><img src=\""+mediaBM+"\"/><br/></p></body></html>")

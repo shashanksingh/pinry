@@ -37,8 +37,8 @@ def pins_add(request):
     descriptionBM=str(request.GET.get('description'))
     #titleBM=str(request.GET.get('title'))
     #is_videoBM=request.GET.get('is_video')
-    #nameHash = hashlib.sha224(mediaBM.split('/')[-1])
-    nameOfMedia = "pins/pin/" + mediaBM.split('/')[-1]
+    nameHash = hashlib.sha224(mediaBM.split('/')[-1])
+    nameOfMedia = "pins/pin/" + nameHash.hexdigest() + '.jpg'
     pinNew = Pin(url=mediaBM,description=descriptionBM,image=nameOfMedia)
     f_orig=open("/opt/sources/code/pinry/media/"+nameOfMedia,'w')
     f_thumbnail=open("/opt/sources/code/pinry/media/"+nameOfMedia.rstrip('.jpg')+".200x1000.jpg",'w')

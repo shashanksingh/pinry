@@ -3,7 +3,9 @@ from django.http import HttpResponse
 from pinry.pins.models import Pin
 from django.core.files import File
 from django.core.files.images import ImageFile
+from django.template.response import TemplateResponse
 import urllib2
+import hashlib
 
 def pins_recent(request, page=1):
     start_pin = abs(int(page) - 1) * 25
@@ -25,8 +27,8 @@ def pins_recent(request, page=1):
 
 def pins_add_form(request):
     mediaBM=str(request.GET.get('media'))
-    return HttpResponse("<html><body onload=\"window.resizeTo(600,600)\"><p><img src=\""+mediaBM+"\"/><br/><form action=\"/api/pins/add\"><input type=\"hidden\" name=\"media\" value=\""+mediaBM+"\" /><h2 style=\"font: normal 26px 'Lobster', cursive , bold; \">Describe What you Like</h2><br/><input type=\"text\" value=\"Like\" name=\"description\"style=\"width:200px; height: 30px;\"/><br/><input type=\"submit\" style=\"background-color:#DFDFDF; \"/></form></p></body></html>")
-
+    return HttpResponse("<html><body onload=\"window.resizeTo(600,600)\"><p><img src=\""+mediaBM+"\"/><br/><form action=\"/api/pins/add\"><input type=\"hidden\" name=\"media\" value=\""+mediaBM+"\" /><h2 style=\"font: normal 18px 'Lobster', cursive , bold; \">Describe what you like?</h2><br/><input type=\"textarea\" value=\"Like\" name=\"description\"style=\"width:200px; height: 40px;\"/><br/><br/><input type=\"submit\" style=\"background-color:#DFDFDF; \"/></form></p></body></html>")
+    #return TemplateResponse(request, 'pins/new_pin_bookmarklet.html')
 
 #FIXME: i am full of dirty hacks :(
 def pins_add(request):
@@ -35,14 +37,16 @@ def pins_add(request):
     descriptionBM=str(request.GET.get('description'))
     #titleBM=str(request.GET.get('title'))
     #is_videoBM=request.GET.get('is_video')
+    #nameHash = hashlib.sha224(mediaBM.split('/')[-1])
     nameOfMedia = "pins/pin/" + mediaBM.split('/')[-1]
     pinNew = Pin(url=mediaBM,description=descriptionBM,image=nameOfMedia)
     f_orig=open("/opt/sources/code/pinry/media/"+nameOfMedia,'w')
     f_thumbnail=open("/opt/sources/code/pinry/media/"+nameOfMedia.rstrip('.jpg')+".200x1000.jpg",'w')
     img_temp = ImageFile(f_orig)
     img_thumb_temp = ImageFile(f_thumbnail)
-    img_temp.write(urllib2.urlopen(mediaBM).read())
-    img_thumb_temp.write(urllib2.urlopen(mediaBM).read())
+    temp_image = urllib2.urlopen(mediaBM).read()
+    img_temp.write(temp_image)
+    img_thumb_temp.write(temp_image)
     img_temp.flush()
     img_thumb_temp.flush()
     img_temp.close()

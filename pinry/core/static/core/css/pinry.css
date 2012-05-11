@@ -11,10 +11,17 @@ body {
 }
 
     .navbar .brand {
-        margin-left: 0;
+        margin-left: 0px;
         color: #333;
         font-family: 'Monoton';
         font-size: 30px;
+    }
+    .navbar .branding {
+        margin-left: 0px;
+	color: #333;
+	font-family: 'Monoton';
+	font-size: 30px;
+
     }
 
     .navbar .nav > li > a {

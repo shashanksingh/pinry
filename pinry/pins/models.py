@@ -14,8 +14,8 @@ class Pin(models.Model):
 #    image = ImageWithThumbsField(upload_to='pins/pin', sizes=((200,1000),))
     image = models.ImageField(upload_to='pins/pin')
     is_video = models.BooleanField()
-    blog_url = models.URLField()
-    buy_url = models.URLField()
+    blog_url = models.URLField(blank=True,null=True)
+    buy_url = models.URLField(blank=True,null=True)
 
     
 

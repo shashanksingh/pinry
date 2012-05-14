@@ -37,6 +37,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
+    "pinry.settings.settings_context_processor.branding",
 )
 
 ROOT_URLCONF = 'pinry.urls'

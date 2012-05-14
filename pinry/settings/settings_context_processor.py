@@ -5,5 +5,6 @@ def branding(request):
 	'BRANDING_LOGO': settings.BRANDING_LOGO,
         'MEDIA_DIR' : settings.MEDIA_DIR,
         'APP_NAME' : settings.APP_NAME,
+	'BRANDING_LINK' : settings.BRANDING_LINK, 
     }
     return settings_dict

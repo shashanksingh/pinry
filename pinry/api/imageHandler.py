@@ -3,12 +3,13 @@ import hashlib
 import os, sys
 import Image
 from django.core.files.images import ImageFile
+from django.conf import settings
 
 MAX_THUMBNAIL_SIZE = 200 , 1000
 
 def saveImage(tempImage,nameOfMedia):
    """saves the raw content of files"""
-   fOrig = open("/opt/sources/code/pinry/media/pins/pin/"+nameOfMedia+".jpg",'w')
+   fOrig = open(settings.MEDIA_DIR+nameOfMedia+".jpg",'w')
    imgTemp = ImageFile(fOrig)
    imgTemp.write(tempImage)
    imgTemp.flush()
@@ -21,7 +22,7 @@ def makeThumbnail(tempImage,nameOfMedia):
    #imgTemp = Image.open("/opt/sources/code/pinry/media/pins/pin/"+nameOfMedia+".jpg")
    #imgTemp.thumbnail(MAX_THUMBNAIL_SIZE , Image.ANTIALIAS )
    #imgTemp.save("/opt/sources/code/pinry/media/pins/pin/"+nameOfMedia+".200x1000.jpg", "JPEG")
-   fThumb = open("/opt/sources/code/pinry/media/pins/pin/"+nameOfMedia+".200x1000.jpg",'w')
+   fThumb = open(settings.MEDIA_DIR+nameOfMedia+".200x1000.jpg",'w')
    imgTemp = ImageFile(fThumb)
    imgTemp.write(tempImage)
    imgTemp.flush()

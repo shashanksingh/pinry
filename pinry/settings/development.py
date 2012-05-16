@@ -1,5 +1,5 @@
 from pinry.settings import *
-
+from settings import *
 import os
 
 
@@ -9,8 +9,8 @@ DATABASE_ENGINE   = 'django.db.backends.mysql'
 DATABASE_HOST = ''
 DATABASE_PORT = ''
 DATABASE_NAME = 'staging'
-DATABASE_USER = 'staging'
-DATABASE_PASSWORD = 'staging'
+DATABASE_USER = 'root'
+DATABASE_PASSWORD = 'never1try'
 
 DATABASES = {
     'default': {

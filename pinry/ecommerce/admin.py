@@ -1,12 +1,12 @@
 from django.contrib import admin
-from .models import item , similarItems
+from .models import product , similarItems
 
-class itemAdmin(admin.ModelAdmin):
+class productAdmin(admin.ModelAdmin):
    pass
 
 class similarItemsAdmin(admin.ModelAdmin):
    pass      
 
-admin.site.register(item , itemAdmin)
-admin.site.register(similarItems , imilarItemsAdmin)
+admin.site.register(product , productAdmin)
+admin.site.register(similarItems , similarItemsAdmin)
 

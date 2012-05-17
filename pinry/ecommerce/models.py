@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 class item(models.Model):
@@ -7,5 +8,5 @@ class item(models.Model):
     product_page = models.URLField()
 
 class similarItems(models.Model):
-    pass
-		
+    name = models.CharField(max_length=200)   
+

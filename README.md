@@ -36,7 +36,7 @@ dependencies for PIL installed. (If you are on Ubuntu you can do this by typing
     $ bin/python manage.py syncdb
     $ bin/python manage.py migrate
     $ bin/python manage.py runserver
-
+    $ vim pinry/settings/settings.py
 Following this will get you a development server up and running. If you want a
 production server [Google around][2] for more information on running Django in a
 production environment and create a "pinry/settings/production.py" file.

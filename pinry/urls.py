@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^pins/', include('pinry.pins.urls', namespace='pins')),
     url(r'^api/', include('pinry.api.urls', namespace='api')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^ecommerce/',include('pinry.ecommerce.urls', namespace='ecommerce')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

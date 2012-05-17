@@ -2,7 +2,29 @@
 
 {% block title %}Similar Items{% endblock %}
 
-{% block yield %}
+{% block head %}
+<script>
+$(document).ready(initializeGrid);
 
+function initializeGrid() {
+  $("ul#grid li img").each(function() {
+    var width = $(this).width() / 100 + "em";
+    var height = $(this).height() / 100 + "em";
+    $(this).css("width",width);
+    $(this).css("height",height);
+  });
+}
+</script>
 {% endblock %}
+
+{% block yield %}
+	<div>
+		<ul id="grid">
+		{% for images in pin %}
+			<li><a href= "#"><img src="{{images}}" ></img></a></li>
+		{% endfor %}
+		</ul>
+	</div>
+{% endblock %}
+
 

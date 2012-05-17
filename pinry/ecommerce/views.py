@@ -7,4 +7,14 @@ from django.template.response import TemplateResponse
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib import messages
+from .models import  similarItems
+from pinry.pins.models import Pin
 
+def similar_items(request):
+    pinInQuery = int(request.GET.get('pin_id'))
+   # pinNeeded = similarItems.objects.get(pins=pinInQuery)
+    pinNeeded = Pin.objects.all()
+    context = {
+        'pin': pinNeeded
+    }
+    return TemplateResponse(request,'similar_items.html',context)

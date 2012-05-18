@@ -25,7 +25,7 @@ def pins_recent(request, page=1):
             'description': pin.description,
             'blog_url': pin.blog_url,
             'buy_url' : pin.buy_url,
-            'user_name' : request.user.username,
+            'user_name' : pin.author.username,
         })
 
     return HttpResponse(simplejson.dumps(recent_pins), mimetype="application/json")

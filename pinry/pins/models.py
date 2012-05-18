@@ -2,7 +2,7 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
-
+from django.contrib.auth.models import User
 #from thumbs import ImageWithThumbsField
 
 import urllib2
@@ -16,7 +16,7 @@ class Pin(models.Model):
     is_video = models.BooleanField()
     blog_url = models.URLField(blank=True,null=True)
     buy_url = models.URLField(blank=True,null=True)
-
+    author = models.ForeignKey(User)
     
 
     def __unicode__(self):

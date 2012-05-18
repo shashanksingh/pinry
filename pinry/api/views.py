@@ -33,10 +33,10 @@ def pins_recent(request, page=1):
 
 def pins_add_form(request):
     mediaBM=str(request.GET.get('media'))
-#    if request.user.is_authenticated():
-    return HttpResponse("<html><body onload=\"window.resizeTo(600,600)\"><p><img src=\""+mediaBM+"\"/><br/><form action=\"/api/pins/add\"><input type=\"hidden\" name=\"media\" value=\""+mediaBM+"\" /><h2 style=\"font: normal 18px 'Lobster', cursive , bold; \">Describe what you like?</h2><br/><input type=\"textarea\" value=\"Like\" name=\"description\"style=\"width:200px; height: 40px;\"/><br/><br/><input type=\"submit\" style=\"background-color:#DFDFDF; \"/></form></p></body></html>")
-#   else:
-        #return HttpResponseRedirect(reverse('core:login'))
+    if request.user.is_authenticated():
+       return HttpResponse("<html><body onload=\"window.resizeTo(600,600)\"><p><img src=\""+mediaBM+"\"/><br/><form action=\"/api/pins/add\"><input type=\"hidden\" name=\"media\" value=\""+mediaBM+"\" /><h2 style=\"font: normal 18px 'Lobster', cursive , bold; \">Describe what you like?</h2><br/><input type=\"textarea\" value=\"Like\" name=\"description\"style=\"width:200px; height: 40px;\"/><br/><br/><input type=\"submit\" style=\"background-color:#DFDFDF; \"/></form></p></body></html>")
+    else:
+       return HttpResponseRedirect(reverse('core:login_no_navbar'))
 #        return redirect_to_login("http://getthelook.in:7000/
 #return TemplateResponse(request, 'pins/new_pin_bookmarklet.html')
 

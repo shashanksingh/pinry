@@ -15,4 +15,6 @@
 
 # python
 *.pyc
-development.py
+
+# jenkins
+/reports/

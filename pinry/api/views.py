@@ -26,6 +26,7 @@ def pins_recent(request, page=1):
             'blog_url': pin.blog_url,
             'buy_url' : pin.buy_url,
             'user_name' : pin.author.username,
+            'similar_items' : pin.similar_items,
         })
 
     return HttpResponse(simplejson.dumps(recent_pins), mimetype="application/json")

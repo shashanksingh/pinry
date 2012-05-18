@@ -67,7 +67,7 @@ $(window).ready(function () {
               html += '<p>';
               if (image.blog_url != "" ) html += '<a class="btn" href="'+image.blog_url+'">Read</a> &nbsp;';
               if (image.buy_url != "" ) html += '<a class="btn" href="'+image.buy_url+'">Buy</a> &nbsp;';
-              if (image.similar_items == "True" ) html += '<a class="btn" href="/ecommerce/similar-items/?pin_id='+image.id+'">Similar</a>';
+              if (image.similar_items == true ) html += '<a class="btn" href="/ecommerce/similar-items/?pin_id='+image.id+'">Similar</a>';
               html += '</p>';
               if (image.user_name != "" ) html += '<p class="info" align="right">'+image.user_name+'</p>';
           html += '</div>';

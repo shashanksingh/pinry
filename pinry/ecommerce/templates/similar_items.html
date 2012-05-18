@@ -20,9 +20,7 @@ function initializeGrid() {
 {% block yield %}
 	<div>
 		<ul id="grid">
-		{% for images in pin %}
-			<li><a href= "#"><img src="{{images}}" ></img></a></li>
-		{% endfor %}
+			<li><a href= "{{page_url}}"><img src="{{image}}" ></img></a></li>
 		</ul>
 	</div>
 {% endblock %}

@@ -4,9 +4,11 @@
 
 {% block yield %}
 	<div id="modal">
+		{% for item in similar %}
 		<ul id="grid">
-			<li><a href= "{{page_url}}"><img src="{{image}}" ></img></a></li>
+			<li><a href= "{{item.page_url}}"><img src="{{item.image}}" ></img></a></li>
 		</ul>
+		{% endfor %}
 	</div>
 {% endblock %}
 

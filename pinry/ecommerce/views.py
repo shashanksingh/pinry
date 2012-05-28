@@ -12,9 +12,10 @@ from pinry.pins.models import Pin
 
 def similar_items(request):
     pinInQuery = int(request.GET.get('pin_id'))
-   # pinNeeded = similarItems.objects.get(pins=pinInQuery)
-    pinNeeded = Pin.objects.all()
+    pinNeeded = similarItems.objects.get(pins=pinInQuery)
+    #pinNeeded = Pin.objects.all()
     context = {
-        'pin': pinNeeded
+        'image': pinNeeded.image ,
+        'page_url' : pinNeeded.page_url,
     }
     return TemplateResponse(request,'similar_items.html',context)

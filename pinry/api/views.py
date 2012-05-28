@@ -7,6 +7,8 @@ from django.template.response import TemplateResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.views import redirect_to_login 
+from django.contrib.auth.models import User
 import urllib2
 import hashlib
 import imageHandler
@@ -25,7 +27,8 @@ def pins_recent(request, page=1):
             'description': pin.description,
             'blog_url': pin.blog_url,
             'buy_url' : pin.buy_url,
-            'user_name' : request.user.username,
+            'user_name' : pin.author.username,
+            'similar_items' : pin.similar_items,
         })
 
     return HttpResponse(simplejson.dumps(recent_pins), mimetype="application/json")
@@ -34,9 +37,10 @@ def pins_add_form(request):
     mediaBM=str(request.GET.get('media'))
 #    if request.user.is_authenticated():
     return HttpResponse("<html><body onload=\"window.resizeTo(600,600)\"><p><img src=\""+mediaBM+"\"/><br/><form action=\"/api/pins/add\"><input type=\"hidden\" name=\"media\" value=\""+mediaBM+"\" /><h2 style=\"font: normal 18px 'Lobster', cursive , bold; \">Describe what you like?</h2><br/><input type=\"textarea\" value=\"Like\" name=\"description\"style=\"width:200px; height: 40px;\"/><br/><br/><input type=\"submit\" style=\"background-color:#DFDFDF; \"/></form></p></body></html>")
-#   else:
-        #return HttpResponseRedirect(reverse('core:login'))
-#        return redirect_to_login("http://getthelook.in:7000/
+#    else:
+#      return HttpResponseRedirect(reverse('core:login_no_navbar'))
+    #full_path='http://trendboard.getthelook.in/pins/add/form/?media='+mediaBM
+    #return redirect_to_login(full_path,reverse('core:login_no_navbar'))
 #return TemplateResponse(request, 'pins/new_pin_bookmarklet.html')
 
 def pins_add(request):
@@ -48,7 +52,7 @@ def pins_add(request):
     #is_videoBM=request.GET.get('is_video')
     nameHash = hashlib.sha224(mediaBM.split('/')[-1]).hexdigest()
     nameOfMedia = "pins/pin/" + nameHash + '.jpg'
-    pinNew = Pin(url=mediaBM,description=descriptionBM,image=nameOfMedia)
+    pinNew = Pin(url=mediaBM,description=descriptionBM,image=nameOfMedia,author=User.objects.get(pk=1))
     rawImage = imageHandler.downloadImage(mediaBM)
     imageHandler.saveImage(rawImage,nameHash)
     imageHandler.makeThumbnail(rawImage,nameHash)

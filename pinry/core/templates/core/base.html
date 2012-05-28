@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TrendBoard - {% block title %}{% endblock %}</title>
+        <title>{{APP_NAME}} - {% block title %}{% endblock %}</title>
 
         {% if debug %}
             <link rel="stylesheet" href="/static/vendor/bootstrap/2.0.3/css/bootstrap.css">
@@ -34,13 +34,14 @@
 
     </head>
     <body>
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
+        {% block navbar %}
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
 		
-		<a href={{BRANDING_LINK}} class="branding" ><img src={{BRANDING_LOGO}}></img></a>
-                <a href="{% url core:home %}" class="branding" >{{APP_NAME}}</a>
+		   <a href={{BRANDING_LINK}} class="branding" ><img src={{BRANDING_LOGO}}></img></a>
+                   <a href="{% url core:home %}" class="branding" >{{APP_NAME}}</a>
 
-                <ul class="nav pull-right">
+                   <ul class="nav pull-right">
 			<li><a href="http://www.getthelook.in/goodies">What's This?</a></li>
 			<li><a href="#"  onClick="window.location.reload()" >Refresh</a></li>
                     {% if user.is_authenticated %}
@@ -50,10 +51,10 @@
                         <li><a href="{% url core:login %}">Login</a></li>
                         <li><a href="{% url core:register %}">Register</a></li>
                     {% endif %}
-                </ul>
+                    </ul>
+                 </div>
             </div>
-        </div>
-
+        {% endblock %}
         {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
@@ -80,7 +81,7 @@
             <script src="/static/vendor/imagesloaded/2.0.1/jquery.imagesloaded.min.js"></script>
         {% endif %}
 
-        <script src="/static/core/js/pinry.js"></script>
+        {% block load_pinry_js %}<script src="/static/core/js/pinry.js"></script>{% endblock %}
         <script src="/static/core/js/messages.js"></script>
 
 	{% block endOfBody %} {% endblock %}

@@ -2,8 +2,8 @@
  * Based on Wookmark's endless scroll.
  */
 $(window).ready(function () {
-    var apiURL = '/api/pins/recent/'
-    var page = 1;
+    var apiURL = '/api/pin/?format=json&offset='
+    var page = 0;
     var handler = null;
     var isLoading = false;
     
@@ -40,7 +40,7 @@ $(window).ready(function () {
         $('#loader').show();
         
         $.ajax({
-            url: apiURL+page,
+            url: apiURL+(page*20),
             success: onLoadData
         });
     };
@@ -49,6 +49,7 @@ $(window).ready(function () {
      * Receives data from the API, creates HTML for images and updates the layout
      */
     function onLoadData(data) {
+        data = data.objects;
         isLoading = false;
         $('#loader').hide();
         
@@ -59,15 +60,17 @@ $(window).ready(function () {
         for(; i<length; i++) {
           image = data[i];
           html += '<div class="pin">';
-              /*html += '<div class="pin-menu" onmouseover="this.style=\"display:inline\"></div>';*/
-              html += '<a class="fancybox" rel="pins" href="'+image.original+'">';
-                  html += '<img src="'+image.thumbnail+'" width="200" height="'+Math.round(image.height/image.width*200)+'">';
+              html += '<div class="pin-menu" onmouseover="this.style=\"display:inline\"></div>';
+              html += '<a class="fancybox" rel="pins" href="'+image.image+'">';
+                  html += '<img src="'+image.thumbnail+'" width="200" >';
               html += '</a>';
               html += '<p>'+image.description+'</p>';
-              if (image.blog_url != "" ) html += '<a class="btn" href="'+image.blog_url+'">Read On Blog</a> &nbsp;'
-              if (image.buy_url != "" ) html += '<a class="btn" href="'+image.buy_url+'">Buy This</a> &nbsp;'
-              if (image.similar_items != "" ) html += '<br/><a class="btn" href="/ecommerce/similar-items/?pin_id='+image.id+'">Get Similar Items</a>'
-              /*if (image.user_name != "" ) html += '<p align="right">'+image.user_name+'</p>'*/
+              html += '<p>';
+              if (image.blog_url != "" ) html += '<a class="btn" href="'+image.blog_url+'">Read</a> &nbsp;';
+              if (image.buy_url != "" ) html += '<a class="btn" href="'+image.buy_url+'">Buy</a> &nbsp;';
+              if (image.similar_items == true ) html += '<a class="btn" href="/ecommerce/similar-items/?pin_id='+image.id+'">Similar</a>';
+              html += '</p>';
+              if (image.user_name != "" ) html += '<p class="info" align="right">'+image.user_name+'</p>';
           html += '</div>';
         }
         

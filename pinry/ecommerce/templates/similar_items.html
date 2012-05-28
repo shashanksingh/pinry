@@ -5,9 +5,7 @@
 {% block yield %}
 	<div id="modal">
 		<ul id="grid">
-		{% for images in pin %}
-			<li><a href= "#"><img src="{{images}}" ></img></a></li>
-		{% endfor %}
+			<li><a href= "{{page_url}}"><img src="{{image}}" ></img></a></li>
 		</ul>
 	</div>
 {% endblock %}
@@ -26,3 +24,4 @@ $(document).ready(function(){
 {% endblock %}
 
 
+{% block load_pinry_js %}{% endblock %}

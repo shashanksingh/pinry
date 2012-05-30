@@ -9,4 +9,5 @@ urlpatterns = patterns('',
         {'template_name': 'core/login_no_navbar.html'}, name='login_no_navbar'),
     url(r'^register/$', 'pinry.core.views.register', name='register'),
     url(r'^logout/$', 'pinry.core.views.logout_user', name='logout'),
+    #url(r'^accounts/profile/$', 'pinry.core.views.account_profile', name='profile'),
 )

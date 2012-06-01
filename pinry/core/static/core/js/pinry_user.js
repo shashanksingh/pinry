@@ -2,7 +2,7 @@
  * Based on Wookmark's endless scroll.
  */
 $(window).ready(function () {
-    var apiURL = '/api/pins/recent/' /*just change this api call*/
+    var apiURL = '/api/pins/user/recent/' /*just change this api call*/
     var page = 1;
     var handler = null;
     var isLoading = false;

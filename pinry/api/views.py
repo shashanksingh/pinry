@@ -13,6 +13,26 @@ import urllib2
 import hashlib
 import imageHandler
 
+def pins_user_recent(request, user="root" , page=1):
+    start_pin = abs(int(page) - 1) * 25
+    end_pin = int(page) * 25
+
+    pins = Pin.objects.order_by('-id')[start_pin:end_pin]
+    recent_pins = []
+    for pin in pins:
+        recent_pins.append({
+            'id': pin.id,
+            'thumbnail': pin.image.url.rstrip('.jpg')+".200x1000.jpg",
+            'original': pin.image.url,
+            'description': pin.description,
+            'blog_url': pin.blog_url,
+            'buy_url' : pin.buy_url,
+            'user_name' : pin.author.username,
+            'similar_items' : pin.similar_items,
+        })
+
+    return HttpResponse(simplejson.dumps(recent_pins), mimetype="application/json")
+
 def pins_recent(request, page=1):
     start_pin = abs(int(page) - 1) * 25
     end_pin = int(page) * 25

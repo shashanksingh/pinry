@@ -9,14 +9,15 @@
     <div class="container">
         <div class="row">
             <div id="form" class="span6 offset3">
-                <h1>Login</h1>
+		<h1>Login</h1>
                 <form action="{% url core:login %}" method="post" class="form-horizontal">
+		    <h3 align="center"> You have to be Logged in to Pin</h3>
                     {% csrf_token %}
                     {% for field in form %}
                         {% bootstrap_field field %}
                     {% endfor %}
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary">Login And Then Try</button>
                         <a href="{% url core:home %}" class="btn">Cancel</a>
                     </div>
                 </form>

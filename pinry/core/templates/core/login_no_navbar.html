@@ -2,9 +2,9 @@
 
 {% load bootstrap_field %}
 
-
 {% block title %}Login{% endblock %}
 {% block navbar %}{% endblock %}
+
 {% block yield %}
     <div class="container">
         <div class="row">
@@ -17,12 +17,13 @@
                         {% bootstrap_field field %}
                     {% endfor %}
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">Login And Then Try</button>
+                        <button type="submit" class="btn btn-primary">Login & then try again</button>
                         <a href="{% url core:home %}" class="btn">Cancel</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
 {% endblock %}
 

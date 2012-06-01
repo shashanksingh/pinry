@@ -9,6 +9,9 @@ from .forms import PinForm
 def recent_pins(request):
     return TemplateResponse(request, 'pins/recent_pins.html', None)
 
+def user_pins(request):
+    return TemplateResponse(requst,  'pins/recent_user_pins.html', None)
+
 
 def new_pin(request):
     if request.method == 'POST':

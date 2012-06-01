@@ -3,11 +3,10 @@
  */
 $(window).ready(function () {
     var apiURL = '/api/pins/user/recent/' /*just change this api call*/
-    var user_id=1;
+    //var user_id=1;
     var page = 1;
     var handler = null;
     var isLoading = false;
-    
     /**
      * When scrolled all the way to the bottom, add more tiles.
      */

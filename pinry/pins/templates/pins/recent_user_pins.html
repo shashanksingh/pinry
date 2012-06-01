@@ -1,5 +1,4 @@
 {% extends 'core/base.html' %}
-
 {% block title %}Recent Pins{% endblock %}
 {% block top-right-menu-one%}<a href="/">Go Back</a> {%endblock%}
 {% block yield %}
@@ -13,4 +12,7 @@
     </div>
 {% endblock %}
 
-{% block load_pinry_js %}<script src="/static/core/js/pinry_user.js"></script>{% endblock %}
+{% block load_pinry_js %}
+<script src="/static/core/js/pinry_user.js"></script>
+<script type="text/javascript"> var user_id={{ user_id }};</script>
+{% endblock %}

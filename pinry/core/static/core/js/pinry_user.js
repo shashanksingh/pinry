@@ -3,6 +3,7 @@
  */
 $(window).ready(function () {
     var apiURL = '/api/pins/user/recent/' /*just change this api call*/
+    var user_id=1;
     var page = 1;
     var handler = null;
     var isLoading = false;
@@ -40,7 +41,7 @@ $(window).ready(function () {
         $('#loader').show();
         
         $.ajax({
-            url: apiURL+page,
+            url: apiURL+user_id+"/"+page,
             success: onLoadData
         });
     };

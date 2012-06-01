@@ -13,11 +13,11 @@ import urllib2
 import hashlib
 import imageHandler
 
-def pins_user_recent(request, user="root" , page=1):
+def pins_user_recent(request, user_id=1, page=1):
     start_pin = abs(int(page) - 1) * 25
     end_pin = int(page) * 25
 
-    pins = Pin.objects.order_by('-id')[start_pin:end_pin]
+    pins = Pin.objects.order_by('-id').filter(author=user_id)
     recent_pins = []
     for pin in pins:
         recent_pins.append({
@@ -48,6 +48,7 @@ def pins_recent(request, page=1):
             'blog_url': pin.blog_url,
             'buy_url' : pin.buy_url,
             'user_name' : pin.author.username,
+            'user_id' : pin.author.id,
             'similar_items' : pin.similar_items,
         })
 

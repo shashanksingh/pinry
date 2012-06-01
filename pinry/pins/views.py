@@ -10,7 +10,11 @@ def recent_pins(request):
     return TemplateResponse(request, 'pins/recent_pins.html', None)
 
 def user_pins(request):
-    return TemplateResponse(request,  'pins/recent_user_pins.html', None)
+    user_id=str(request.GET.get('user_id'))
+    context = {
+       'user_id':user_id
+    }
+    return TemplateResponse(request,  'pins/recent_user_pins.html', context )
 
 
 def new_pin(request):

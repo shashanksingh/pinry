@@ -29,3 +29,7 @@ def logout_user(request):
     logout(request)
     messages.success(request, 'You have successfully logged out.')
     return HttpResponseRedirect(reverse('core:home'))
+
+@login_required
+def account_profile(request):
+    return HttpResponseRedirect(reverse('pins:recent-pins'))

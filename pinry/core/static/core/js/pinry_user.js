@@ -2,7 +2,7 @@
  * Based on Wookmark's endless scroll.
  */
 $(window).ready(function () {
-    var apiURL = '/api/pins/recent/'
+    var apiURL = '/api/pins/recent/' /*just change this api call*/
     var page = 1;
     var handler = null;
     var isLoading = false;
@@ -64,12 +64,10 @@ $(window).ready(function () {
                   html += '<img src="'+image.thumbnail+'" width="200" height="'+Math.round(image.height/image.width*200)+'">';
               html += '</a>';
               html += '<p>'+image.description+'</p>';
-              html += '<p>';
               if (image.blog_url != "" && image.blog_url != null ) html += '<a class="btn" href="'+image.blog_url+'">Read</a> &nbsp;';
-              if (image.buy_url != "" && image.buy_url != null ) html += '<a class="btn" href="'+image.buy_url+'">Buy</a> &nbsp;';
-              if (image.similar_items == true ) html += '<a class="btn" href="/ecommerce/similar-items/?pin_id='+image.id+'">Similar</a>';
-              if (image.user_name != "" ) html += '<p align="right" class="info">'+image.user_name+'</p>';
-              html += '</p>';
+              if (image.buy_url != "" &&image.buy_url != null ) html += '<a class="btn" href="'+image.buy_url+'">Buy</a> &nbsp;';
+              if (image.similar_items == true ) html += '<br/><a class="btn" href="/ecommerce/similar-items/?pin_id='+image.id+'">Similar</a>';
+               /*html += '<p align="right">'+image.user_name+'</p>';*/
           html += '</div>';
         }
         

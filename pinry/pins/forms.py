@@ -39,4 +39,5 @@ class PinForm(forms.ModelForm):
 
     class Meta:
         model = Pin
-        exclude = ['image']
+        exclude = ['image','author','blog_url','buy_url','is_video','similar_items']
+        #exclude = ['image']

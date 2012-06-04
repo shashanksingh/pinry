@@ -49,7 +49,7 @@
                         {% block top-right-menu-four-auth %}<li><a href="{% url core:logout %}">Logout</a></li>{% endblock %}
                     {% else %}
                         {% block top-right-menu-three-non-auth %}<li><a href="{% url core:login %}">Login</a></li>{% endblock %}
-                        {% block top-right-menu-three-non-auth %}<li><a href="{% url core:register %}">Register</a></li>{%endblock %}
+                        {% block top-right-menu-four-non-auth %}<li><a href="{% url core:register %}">Register</a></li>{%endblock %}
                     {% endif %}
                     </ul>
                  </div>

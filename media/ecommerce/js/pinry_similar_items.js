@@ -63,8 +63,9 @@ $(window).ready(function () {
               html += '<a class="fancybox" rel="pins" href="'+image.original+'">';
                   html += '<img src="'+image.thumbnail+'" width="200" height="'+Math.round(image.height/image.width*200)+'">';
               html += '</a>';
-              html += '<p>'+image.description+'</p>';
+              /*html += '<p>'+image.description+'</p>';*/
               html += '<p>';
+              if (image.description != "") html += '<a class="btn" href="'+image.description+'">Check</a>';
               if (image.blog_url != "" && image.blog_url != null ) html += '<a class="btn" href="'+image.blog_url+'">Read</a> &nbsp;';
               if (image.buy_url != "" && image.buy_url != null ) html += '<a class="btn" href="'+image.buy_url+'">Buy</a> &nbsp;';
               if (image.similar_items == true ) html += '<a class="btn" href="/ecommerce/similar-items/?pin_id='+image.id+'">Similar</a>';

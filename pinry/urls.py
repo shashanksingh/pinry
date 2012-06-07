@@ -11,4 +11,6 @@ urlpatterns = patterns('',
     url(r'^api/', include('pinry.api.urls', namespace='api')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ecommerce/',include('pinry.ecommerce.urls', namespace='ecommerce')),
+    url(r'^facebook/', include('django_facebook.urls')),
+    url(r'^accounts/', include('django_facebook.auth_urls')),  
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

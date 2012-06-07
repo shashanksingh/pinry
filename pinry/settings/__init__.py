@@ -30,6 +30,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
+    "django_facebook.context_processors.facebook",
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
@@ -64,4 +65,12 @@ INSTALLED_APPS = (
     'pinry.api',
     'django.contrib.admin',
     'pinry.ecommerce',
+    'django_facebook',
 )
+
+AUTHENTICATION_BACKENDS = (
+    'django_facebook.auth_backends.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'

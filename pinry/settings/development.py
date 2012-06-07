@@ -8,9 +8,9 @@ TEMPLATE_DEBUG = DEBUG
 DATABASE_ENGINE   = 'django.db.backends.mysql'
 DATABASE_HOST = ''
 DATABASE_PORT = ''
-DATABASE_NAME = 'staging'
-DATABASE_USER = 'staging'
-DATABASE_PASSWORD = 'staging'
+DATABASE_NAME = ''
+DATABASE_USER = ''
+DATABASE_PASSWORD = ''
 
 DATABASES = {
     'default': {

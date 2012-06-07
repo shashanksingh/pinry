@@ -74,4 +74,4 @@ AUTHENTICATION_BACKENDS = (
 )
 
 AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
-FACEBOOK_REGISTRATION_BACKEND = 'registration.backends.default.DefaultBackend'
+#FACEBOOK_REGISTRATION_BACKEND = 'django_facebook.registration_backends.OldDjangoRegistrationBackend'

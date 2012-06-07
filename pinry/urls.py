@@ -13,4 +13,7 @@ urlpatterns = patterns('',
     url(r'^ecommerce/',include('pinry.ecommerce.urls', namespace='ecommerce')),
     url(r'^facebook/', include('django_facebook.urls')),
     url(r'^accounts/', include('django_facebook.auth_urls')),  
+    url(r'^robots\.txt$', 'django.views.generic.simple.direct_to_template',{'template': 'robots.txt', 'mimetype': 'text/plain'}),
+    url(r'^humans\.txt$', 'django.views.generic.simple.direct_to_template',{'template': 'humans.txt', 'mimetype': 'text/plain'}),
+    url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to',{'url': '/media/img/favicon.ico'}),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

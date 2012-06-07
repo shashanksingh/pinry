@@ -3,6 +3,11 @@
 {% load bootstrap_field %}
 
 
+{% block head %}
+<link href="{{ STATIC_URL }}css/facebook.css" type="text/css" rel="stylesheet" media="all" />       
+{% include 'django_facebook/_facebook_js.html' %}
+{% endblock %}
+
 {% block title %}Login{% endblock %}
 
 {% block yield %}
@@ -15,10 +20,15 @@
                     {% for field in form %}
                         {% bootstrap_field field %}
                     {% endfor %}
-                    <div class="form-actions">
+                         OR 
+		<form action="{% url facebook_connect %}?facebook_login=1" method="post" >
+                        <a href="javascript:void(0);" onclick="F.connect(this.parentNode);"class="btn btn-primary">Use Facebook</a>
+                        <input type="hidden" value="/login/" name="next" />
+                </form>
+                 <div class="form-actions">
                         <button type="submit" class="btn btn-primary">Login</button>
-                        <a href="{% url core:home %}" class="btn">Cancel</a>
-                    </div>
+                        <a href="{% url core:home %}" class="btn">Cancel</a> 
+                   </div>
                 </form>
             </div>
         </div>

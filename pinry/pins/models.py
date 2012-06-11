@@ -3,10 +3,21 @@ from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django_facebook.models import FacebookProfile
 #from thumbs import ImageWithThumbsField
 
 import urllib2
 
+@receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs):
+	"""Create a matching profile whenever a user object is created."""
+	if created:
+		profile, new = FacebookProfile.objects.get_or_create(user=instance)
+
+class UserProfile(models.Model):
+	user = models.ForeignKey(User)
 
 class Pin(models.Model):
     url = models.TextField()

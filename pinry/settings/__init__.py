@@ -42,7 +42,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 ROOT_URLCONF = 'pinry.urls'
 WSGI_APPLICATION = 'pinry.wsgi.application'
-LOGIN_REDIRECT_URL = '/' #was causing problem with other stuff
+#LOGIN_REDIRECT_URL = '/' #was causing problem with other stuff
 INTERNAL_IPS = ['127.0.0.1']
 MESSAGE_TAGS = {
     messages.WARNING: 'alert',
